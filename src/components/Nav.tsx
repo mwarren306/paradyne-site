@@ -31,7 +31,7 @@ export default function Nav() {
         <a href={import.meta.env.BASE_URL} style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', flexShrink: 0 }}>
           <div style={{ width: 131, height: 44, flexShrink: 0 }}>
             <img
-              src={`${import.meta.env.BASE_URL}/paradyne-horz_no-tag.svg`}
+              src={`${import.meta.env.BASE_URL}paradyne-horz_no-tag.svg`}
               alt="Paradyn"
               style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'left center', display: 'block' }}
             />

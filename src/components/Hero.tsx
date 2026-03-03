@@ -15,11 +15,11 @@ const ChipIcon = ({ 'aria-hidden': ariaHidden }: { 'aria-hidden'?: boolean }) =>
 
 export default function Hero() {
   return (
-    <section id="hero" style={{
+    <section id="hero" className="section-pad-hero" style={{
       position: 'relative', minHeight: '100vh',
       display: 'flex', flexDirection: 'column',
       alignItems: 'center', justifyContent: 'center',
-      padding: '120px 24px 80px', textAlign: 'center',
+      textAlign: 'center',
       overflow: 'hidden', backgroundColor: 'var(--color-bg)',
     }}>
       {/* Star field */}

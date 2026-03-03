@@ -37,7 +37,7 @@ export default function Problem() {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section id="problem" style={{ position: 'relative', padding: '120px 24px', backgroundColor: 'var(--color-bg)', overflow: 'hidden' }}>
+    <section id="problem" className="section-pad" style={{ position: 'relative', backgroundColor: 'var(--color-bg)', overflow: 'hidden' }}>
       {/* Section glow */}
       <div className="glow-section" style={{ top: 0 }} />
 

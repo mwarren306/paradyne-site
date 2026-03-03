@@ -34,7 +34,7 @@ export default function Approach() {
   const [active, setActive] = useState(0);
 
   return (
-    <section id="approach" style={{ position: 'relative', padding: '120px 24px', backgroundColor: 'var(--color-bg)', overflow: 'hidden' }}>
+    <section id="approach" className="section-pad" style={{ position: 'relative', backgroundColor: 'var(--color-bg)', overflow: 'hidden' }}>
       <div className="glow-section" style={{ top: '20%' }} />
 
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
@@ -63,8 +63,7 @@ export default function Approach() {
           initial={{ opacity: 0, y: 32 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.2 }}
-          style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, alignItems: 'stretch' }}
-          className="flex-col md:grid"
+          className="approach-grid"
         >
           {/* Left: step list */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>

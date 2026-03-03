@@ -6,7 +6,7 @@ export default function Contact() {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section id="contact" style={{ position: 'relative', padding: '140px 24px', backgroundColor: 'var(--color-surface)', overflow: 'hidden' }}>
+    <section id="contact" className="section-pad-contact" style={{ position: 'relative', backgroundColor: 'var(--color-surface)', overflow: 'hidden' }}>
       {/* Large atmospheric glow */}
       <div style={{
         position: 'absolute', inset: 0, pointerEvents: 'none',

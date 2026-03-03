@@ -45,7 +45,7 @@ export default function Impact() {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section id="impact" style={{ position: 'relative', padding: '120px 24px', backgroundColor: 'var(--color-surface)', overflow: 'hidden' }}>
+    <section id="impact" className="section-pad" style={{ position: 'relative', backgroundColor: 'var(--color-surface)', overflow: 'hidden' }}>
       <div className="glow-section" style={{ top: -60 }} />
 
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>

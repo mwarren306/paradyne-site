@@ -25,7 +25,7 @@ export default function Founders() {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section id="founders" style={{ position: 'relative', padding: '120px 24px', backgroundColor: 'var(--color-bg)', overflow: 'hidden' }}>
+    <section id="founders" className="section-pad" style={{ position: 'relative', backgroundColor: 'var(--color-bg)', overflow: 'hidden' }}>
       <div className="glow-section" style={{ top: '30%' }} />
 
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>

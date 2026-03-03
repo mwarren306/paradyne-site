@@ -39,7 +39,7 @@ export default function Research() {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section id="research" style={{ position: 'relative', padding: '120px 24px', backgroundColor: 'var(--color-surface)', overflow: 'hidden' }}>
+    <section id="research" className="section-pad" style={{ position: 'relative', backgroundColor: 'var(--color-surface)', overflow: 'hidden' }}>
       <div className="glow-section" style={{ top: -100 }} />
 
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>

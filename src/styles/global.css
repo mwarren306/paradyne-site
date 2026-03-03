@@ -170,3 +170,51 @@ body {
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(55,194,215,0.2), transparent);
 }
+
+/* ── Responsive section padding ──────────────────────── */
+.section-pad {
+  padding: 120px 24px;
+}
+.section-pad-hero {
+  padding: 120px 24px 80px;
+}
+.section-pad-contact {
+  padding: 140px 24px;
+}
+@media (max-width: 767px) {
+  .section-pad         { padding: 72px 20px; }
+  .section-pad-hero    { padding: 96px 20px 64px; }
+  .section-pad-contact { padding: 80px 20px; }
+}
+@media (max-width: 479px) {
+  .section-pad         { padding: 60px 16px; }
+  .section-pad-hero    { padding: 88px 16px 56px; }
+  .section-pad-contact { padding: 64px 16px; }
+}
+
+/* ── Approach responsive grid ────────────────────────── */
+.approach-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+@media (max-width: 767px) {
+  .approach-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Nav inner padding ───────────────────────────────── */
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media (max-width: 479px) {
+  .nav-inner { padding: 0 16px; }
+}

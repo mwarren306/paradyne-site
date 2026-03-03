@@ -9,6 +9,7 @@ import Impact from '../components/Impact';
 import Founders from '../components/Founders';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
+import ScrollToTop from '../components/ScrollToTop';
 ---
 
 <Layout>
@@ -23,4 +24,5 @@ import Footer from '../components/Footer';
     <Contact client:load />
   </main>
   <Footer client:load base={import.meta.env.BASE_URL} />
+  <ScrollToTop client:load />
 </Layout>

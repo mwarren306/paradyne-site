@@ -130,7 +130,7 @@ export default function Hero() {
         style={{ marginTop: 72 }}
       >
         <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)', letterSpacing: '0.08em', marginBottom: 20, textTransform: 'uppercase' }}>
-          NSF-aligned · R&amp;D Stage · Pilot-Based Research
+          R&amp;D Stage · Pilot-Based Research
         </p>
         <div style={{ display: 'flex', gap: 40, alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
           {['Data Structuring', 'Knowledge Layers', 'Voice AI', 'SMB Integration', 'Pilot Programs'].map(tag => (

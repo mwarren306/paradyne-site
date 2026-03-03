@@ -1,4 +1,6 @@
-export default function Footer() {
+export default function Footer({ base = '/' }: { base?: string }) {
+  const logoSrc = `${base.replace(/\/$/, '')}/paradyne-horz_no-tag.svg`;
+
   return (
     <footer id="footer" style={{
       padding: '32px 24px',
@@ -7,9 +9,11 @@ export default function Footer() {
       textAlign: 'center',
     }}>
       <div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
-        <p style={{ fontSize: 14, fontWeight: 700, color: 'rgba(255,255,255,0.7)' }}>
-          Paradyn<span style={{ background: 'linear-gradient(135deg,#37c2d7,#59bf8e)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>.ai</span>
-        </p>
+        <img
+          src={logoSrc}
+          alt="Paradyn"
+          style={{ height: 32, width: 'auto', opacity: 0.7 }}
+        />
         <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)' }}>
           © {new Date().getFullYear()} Paradyn, LLC · All rights reserved · Tupelo, MS
         </p>

@@ -12,7 +12,7 @@ import Footer from '../components/Footer';
 ---
 
 <Layout>
-  <Nav client:load />
+  <Nav client:load base={import.meta.env.BASE_URL} />
   <main id="main-content">
     <Hero client:load />
     <Problem client:load />

@@ -7,7 +7,7 @@ const links = [
   { label: 'Contact',  href: '#contact'  },
 ];
 
-export default function Nav() {
+export default function Nav({ base = '/' }: { base?: string }) {
   return (
     <motion.nav
       aria-label="Main navigation"
@@ -28,10 +28,10 @@ export default function Nav() {
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
         {/* Logo */}
-        <a href={import.meta.env.BASE_URL} style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', flexShrink: 0 }}>
+        <a href={base} style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', flexShrink: 0 }}>
           <div style={{ width: 131, height: 44, flexShrink: 0 }}>
             <img
-              src={`${import.meta.env.BASE_URL}paradyne-horz_no-tag.svg`}
+              src={`${base}paradyne-horz_no-tag.svg`}
               alt="Paradyn"
               style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'left center', display: 'block' }}
             />

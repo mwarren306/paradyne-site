@@ -1,0 +1,38 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \":*)",
+      "Bash(/usr/bin/python3 -c \":*)",
+      "Bash(perl -e ':*)",
+      "Bash(npm create astro@latest . -- --template minimal --no-git --install --typescript strict --skip-houston)",
+      "Bash(npm init -y)",
+      "Bash(npm install astro @astrojs/react @astrojs/tailwind react react-dom framer-motion tailwindcss)",
+      "Bash(npm install -D typescript @types/react @types/react-dom)",
+      "Bash(npm uninstall @astrojs/tailwind)",
+      "Bash(npm install @tailwindcss/vite)",
+      "Bash(npm ls tailwindcss)",
+      "Bash(npm run build)",
+      "Bash(curl -s http://localhost:4323/ -o /dev/null -w \"%{http_code}\")",
+      "Bash(pkill -f \"astro dev\")",
+      "Bash(grep -l \"useInView\" \"/Users/mattwarren/Paradyn Site/node_modules/framer-motion/dist/\"*.js)",
+      "Bash(node -e \":*)",
+      "Bash(pkill -f \"astro\")",
+      "Bash(lsof -ti:4321,4322,4323,4324)",
+      "Bash(curl -s http://localhost:4321/)",
+      "Bash(node:*)",
+      "Bash(cp:*)",
+      "mcp__claude_ai_Figma__get_metadata",
+      "mcp__figma-remote-mcp__generate_figma_design",
+      "Bash(open:*)",
+      "mcp__figma-remote-mcp__get_design_context",
+      "Bash(curl:*)",
+      "Bash(__NEW_LINE_adec9eb0499e34d0__ open:*)",
+      "Bash(__NEW_LINE_1d6efd4d23d5587f__ open:*)",
+      "Bash(open $BASE#figmacapture=a24d43cd-58af-4b11-906a-9561c7d9ae23&figmaendpoint=$EP%2Fa24d43cd-58af-4b11-906a-9561c7d9ae23%2Fsubmit&figmadelay=3000&figmaselector=%23approach:*)",
+      "Bash(open $BASE#figmacapture=a4054acb-fdc3-4abe-b3af-a9fe76e65d1e&figmaendpoint=$EP%2Fa4054acb-fdc3-4abe-b3af-a9fe76e65d1e%2Fsubmit&figmadelay=3000&figmaselector=%23impact:*)",
+      "Bash(open $BASE#figmacapture=a3be509f-e348-4dc9-9b29-4b44f6be5d99&figmaendpoint=$EP%2Fa3be509f-e348-4dc9-9b29-4b44f6be5d99%2Fsubmit&figmadelay=3000&figmaselector=%23founders:*)",
+      "Bash(open $BASE#figmacapture=ce4765ee-5cb5-4465-a4b3-ebf3c4fe38d0&figmaendpoint=$EP%2Fce4765ee-5cb5-4465-a4b3-ebf3c4fe38d0%2Fsubmit&figmadelay=3000&figmaselector=%23contact:*)",
+      "Bash(lsof:*)"
+    ]
+  }
+}

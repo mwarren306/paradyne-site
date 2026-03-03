@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav';
+import Hero from '../components/Hero';
+import Problem from '../components/Problem';
+import Research from '../components/Research';
+import Approach from '../components/Approach';
+import Impact from '../components/Impact';
+import Founders from '../components/Founders';
+import Contact from '../components/Contact';
+import Footer from '../components/Footer';
+---
+
+<Layout>
+  <Nav client:load />
+  <main id="main-content">
+    <Hero client:load />
+    <Problem client:load />
+    <Research client:load />
+    <Approach client:load />
+    <Impact client:load />
+    <Founders client:load />
+    <Contact client:load />
+  </main>
+  <Footer client:load />
+</Layout>

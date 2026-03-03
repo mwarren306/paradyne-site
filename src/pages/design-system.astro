@@ -1,0 +1,823 @@
+---
+import '../styles/global.css';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paradyn Design System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+    <script>
+      if (window.location.hash.includes('figmacapture')) {
+        const style = document.createElement('style');
+        style.textContent = '* { opacity: 1 !important; transform: none !important; transition: none !important; animation: none !important; }';
+        document.head.appendChild(style);
+      }
+    </script>
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        background: #050508;
+        color: #fff;
+        font-family: 'Inter', system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      .ds-page { padding: 0; }
+      .ds-section {
+        padding: 80px 60px;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        position: relative;
+      }
+      .ds-section-header {
+        margin-bottom: 48px;
+      }
+      .ds-eyebrow {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #3ecfbe;
+        margin-bottom: 10px;
+      }
+      .ds-title {
+        font-size: 32px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        color: #fff;
+        margin-bottom: 8px;
+      }
+      .ds-subtitle {
+        font-size: 14px;
+        color: rgba(255,255,255,0.4);
+        line-height: 1.6;
+      }
+      .ds-label {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.35);
+        margin-top: 10px;
+      }
+      .ds-value {
+        font-size: 11px;
+        font-weight: 500;
+        color: rgba(255,255,255,0.5);
+        margin-top: 3px;
+        font-family: 'SF Mono', 'Fira Code', monospace;
+      }
+      .ds-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+      .ds-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+      .ds-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .ds-divider {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(55,194,215,0.2), transparent);
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body class="ds-page">
+
+    <!-- ─── COVER ─────────────────────────────────────────── -->
+    <section id="ds-cover" style="
+      background: #050508;
+      padding: 100px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: relative;
+      overflow: hidden;
+    ">
+      <div style="
+        position: absolute; inset: 0; pointer-events: none;
+        background:
+          radial-gradient(ellipse 70% 60% at 80% 50%, rgba(55,194,215,0.10) 0%, transparent 65%),
+          radial-gradient(ellipse 40% 40% at 20% 60%, rgba(89,191,142,0.07) 0%, transparent 55%);
+      "></div>
+      <div style="position: relative; max-width: 700px;">
+        <div style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 999px; background: rgba(55,194,215,0.09); border: 1px solid rgba(55,194,215,0.3); color: #7dd8e8; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 28px;">
+          Design System v1.0
+        </div>
+        <h1 style="font-size: 72px; font-weight: 800; letter-spacing: -0.04em; line-height: 1.0; margin-bottom: 20px;">
+          Paradyn<br/>
+          <span style="background: linear-gradient(135deg, #37c2d7, #59bf8e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Design System</span>
+        </h1>
+        <p style="font-size: 16px; color: rgba(255,255,255,0.45); line-height: 1.7; max-width: 480px;">
+          A complete reference of design tokens, color variables, typography scales, and UI components for the Paradyn web platform.
+        </p>
+        <div style="display: flex; gap: 32px; margin-top: 40px;">
+          {['Color Tokens', 'Typography', 'Components', 'Patterns'].map(s => (
+            <div style="font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.3); letter-spacing: 0.06em;">{s}</div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── COLOR TOKENS ──────────────────────────────────── -->
+    <section id="ds-colors" class="ds-section" style="background: #06090a;">
+      <div class="ds-section-header">
+        <div class="ds-eyebrow">01 — Foundation</div>
+        <h2 class="ds-title">Color Tokens</h2>
+        <p class="ds-subtitle">All color values defined as CSS custom properties in <code style="background:rgba(255,255,255,0.07);padding:2px 6px;border-radius:4px;font-size:12px;">@theme {}</code> in global.css. Use tokens, never raw hex values.</p>
+      </div>
+
+      <!-- Backgrounds -->
+      <div style="margin-bottom: 40px;">
+        <div style="font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px;">Backgrounds</div>
+        <div class="ds-grid-4">
+          {[
+            { name: '--color-bg', hex: '#050508', label: 'Page Background', usage: 'Main page bg, hero, sections' },
+            { name: '--color-surface', hex: '#06090a', label: 'Surface', usage: 'Alternate section bg (Research, Contact, Impact)' },
+            { name: '--color-card', hex: 'rgba(255,255,255,0.03)', label: 'Card', usage: '.card base background' },
+            { name: '--color-card-hi', hex: 'rgba(255,255,255,0.045)', label: 'Card Elevated', usage: '.card-hi background' },
+          ].map(c => (
+            <div>
+              <div style={`height: 80px; border-radius: 12px; background: ${c.hex}; border: 1px solid rgba(255,255,255,0.12);`}></div>
+              <div class="ds-label">{c.label}</div>
+              <div class="ds-value">{c.name}</div>
+              <div class="ds-value" style="color: rgba(255,255,255,0.3);">{c.hex}</div>
+              <div style="font-size: 10px; color: rgba(255,255,255,0.22); margin-top: 4px; line-height: 1.4;">{c.usage}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Brand -->
+      <div style="margin-bottom: 40px;">
+        <div style="font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px;">Brand</div>
+        <div class="ds-grid-4">
+          {[
+            { name: '--color-primary', hex: '#37c2d7', label: 'Primary Teal', usage: 'Icon borders, active states, glows, gradient start' },
+            { name: '--color-secondary', hex: '#59bf8e', label: 'Secondary Green', usage: 'Gradient end, founder avatar' },
+            { name: 'accent-teal', hex: '#3ecfbe', label: 'Accent Teal', usage: 'Section labels, role text (.section-label)' },
+            { name: 'badge-text', hex: '#7dd8e8', label: 'Badge Text', usage: 'Pill badge text color, icon stroke' },
+          ].map(c => (
+            <div>
+              <div style={`height: 80px; border-radius: 12px; background: ${c.hex};`}></div>
+              <div class="ds-label">{c.label}</div>
+              <div class="ds-value">{c.name}</div>
+              <div class="ds-value" style="color: rgba(255,255,255,0.3);">{c.hex}</div>
+              <div style="font-size: 10px; color: rgba(255,255,255,0.22); margin-top: 4px; line-height: 1.4;">{c.usage}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Brand Gradient -->
+      <div style="margin-bottom: 40px;">
+        <div style="font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px;">Brand Gradient</div>
+        <div class="ds-grid-2">
+          <div>
+            <div style="height: 80px; border-radius: 12px; background: linear-gradient(135deg, #37c2d7, #59bf8e);"></div>
+            <div class="ds-label">Brand Gradient — 135°</div>
+            <div class="ds-value">linear-gradient(135deg, #37c2d7, #59bf8e)</div>
+            <div style="font-size: 10px; color: rgba(255,255,255,0.22); margin-top: 4px;">Used on: Nav CTA, Contact CTA button, .g-text, icon-box bg, founder avatars</div>
+          </div>
+          <div>
+            <div style="height: 80px; border-radius: 12px; background: linear-gradient(135deg, rgba(55,194,215,0.2), rgba(89,191,142,0.2)); border: 1px solid rgba(55,194,215,0.2);"></div>
+            <div class="ds-label">Brand Gradient — 20% Opacity</div>
+            <div class="ds-value">linear-gradient(135deg, rgba(55,194,215,0.2), rgba(89,191,142,0.2))</div>
+            <div style="font-size: 10px; color: rgba(255,255,255,0.22); margin-top: 4px;">Used on: .icon-box background</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div style="margin-bottom: 40px;">
+        <div style="font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px;">Text</div>
+        <div class="ds-grid-4">
+          {[
+            { name: '--color-text', hex: '#ffffff', label: 'Text Primary', usage: 'Headings, card titles, names' },
+            { name: 'text-muted-45', hex: 'rgba(255,255,255,0.45)', label: 'Text Muted 45%', usage: 'Body copy, card body, paragraphs' },
+            { name: 'text-muted-25', hex: 'rgba(255,255,255,0.25)', label: 'Text Muted 25%', usage: 'Secondary muted text' },
+            { name: 'text-muted-22', hex: 'rgba(255,255,255,0.22)', label: 'Text Muted 22%', usage: 'Captions, footer, tertiary labels' },
+          ].map(c => (
+            <div>
+              <div style={`height: 80px; border-radius: 12px; background: ${c.hex}; border: 1px solid rgba(255,255,255,0.1);`}></div>
+              <div class="ds-label">{c.label}</div>
+              <div class="ds-value">{c.name}</div>
+              <div class="ds-value" style="color: rgba(255,255,255,0.3);">{c.hex}</div>
+              <div style="font-size: 10px; color: rgba(255,255,255,0.22); margin-top: 4px; line-height: 1.4;">{c.usage}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Borders -->
+      <div>
+        <div style="font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px;">Borders & Muted</div>
+        <div class="ds-grid-4">
+          {[
+            { name: '--color-border', hex: 'rgba(255,255,255,0.07)', label: 'Border Default', usage: '.card border, nav border-bottom' },
+            { name: '--color-border-hi', hex: 'rgba(255,255,255,0.12)', label: 'Border Elevated', usage: '.card-hi border, active step borders' },
+            { name: '--color-muted', hex: '#7a8a88', label: 'Muted', usage: 'De-emphasized text' },
+            { name: '--color-muted-hi', hex: '#a0b8b4', label: 'Muted High', usage: 'Slightly brighter muted text' },
+          ].map(c => (
+            <div>
+              <div style={`height: 80px; border-radius: 12px; background: ${c.hex}; border: 1px solid rgba(255,255,255,0.1);`}></div>
+              <div class="ds-label">{c.label}</div>
+              <div class="ds-value">{c.name}</div>
+              <div class="ds-value" style="color: rgba(255,255,255,0.3);">{c.hex}</div>
+              <div style="font-size: 10px; color: rgba(255,255,255,0.22); margin-top: 4px; line-height: 1.4;">{c.usage}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <div class="ds-divider"></div>
+
+    <!-- ─── TYPOGRAPHY ─────────────────────────────────────── -->
+    <section id="ds-typography" class="ds-section" style="background: #050508;">
+      <div class="ds-section-header">
+        <div class="ds-eyebrow">02 — Foundation</div>
+        <h2 class="ds-title">Typography</h2>
+        <p class="ds-subtitle">Font family: <strong>Inter</strong> (Google Fonts). Weights loaded: 300, 400, 500, 600, 700, 800. All sizes use px or clamp() — no rem.</p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 0;">
+        {[
+          {
+            name: 'Hero Headline',
+            token: 'type/hero-headline',
+            sample: 'Applied AI Infrastructure',
+            style: 'font-size: clamp(42px, 7vw, 80px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; color: #fff;',
+            spec: 'clamp(42px, 7vw, 80px) · weight 800 · tracking -0.03em · lh 1.1',
+            usage: 'Hero section H1',
+          },
+          {
+            name: 'Section Headline',
+            token: 'type/section-headline',
+            sample: 'Small businesses are drowning',
+            style: 'font-size: clamp(30px, 4vw, 48px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; color: #fff;',
+            spec: 'clamp(30px, 4vw, 48px) · weight 800 · tracking -0.02em · lh 1.15',
+            usage: 'All section H2 headings',
+          },
+          {
+            name: 'Contact Headline',
+            token: 'type/contact-headline',
+            sample: "Let's Build Something Together",
+            style: 'font-size: clamp(32px, 5vw, 60px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; color: #fff;',
+            spec: 'clamp(32px, 5vw, 60px) · weight 800 · tracking -0.03em · lh 1.1',
+            usage: 'Contact section H2',
+          },
+          {
+            name: 'Card Title',
+            token: 'type/card-title',
+            sample: 'Disconnected Tools',
+            style: 'font-size: 16px; font-weight: 700; color: #fff; line-height: 1.4;',
+            spec: '16px · weight 700 · color #fff',
+            usage: 'Card headings, step labels',
+          },
+          {
+            name: 'Body',
+            token: 'type/body',
+            sample: 'Many SMBs operate across fragmented tools, resulting in duplicated effort and inconsistent data.',
+            style: 'font-size: 16px; font-weight: 400; color: rgba(255,255,255,0.45); line-height: 1.7;',
+            spec: '16px · weight 400 · color rgba(255,255,255,0.45) · lh 1.7',
+            usage: 'Section supporting paragraphs',
+          },
+          {
+            name: 'Card Body',
+            token: 'type/card-body',
+            sample: 'Spreadsheets, email, accounting, POS, and CRM operating in silos — creating duplicated effort.',
+            style: 'font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.45); line-height: 1.7;',
+            spec: '14px · weight 400 · color rgba(255,255,255,0.45) · lh 1.7',
+            usage: 'Card body text',
+          },
+          {
+            name: 'Section Label',
+            token: 'type/section-label',
+            sample: 'The Problem',
+            style: 'font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3ecfbe;',
+            spec: '11px · weight 600 · tracking 0.12em · UPPERCASE · color #3ecfbe',
+            usage: '.section-label — appears above every H2',
+          },
+          {
+            name: 'Pill Badge',
+            token: 'type/pill-badge',
+            sample: 'NSF-aligned Research',
+            style: 'font-size: 12px; font-weight: 500; letter-spacing: 0.03em; color: #7dd8e8;',
+            spec: '12px · weight 500 · tracking 0.03em · color #7dd8e8',
+            usage: '.pill-badge text, step tags',
+          },
+          {
+            name: 'Nav Link',
+            token: 'type/nav-link',
+            sample: 'Research · Approach · Founders · Contact',
+            style: 'font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.5);',
+            spec: '14px · weight 400 · color rgba(255,255,255,0.5) → #fff on hover',
+            usage: 'Navigation link items',
+          },
+          {
+            name: 'Button Primary',
+            token: 'type/button-primary',
+            sample: 'Get in Touch',
+            style: 'font-size: 16px; font-weight: 700; color: #050508;',
+            spec: '16px · weight 700 · color #050508 (dark on light bg)',
+            usage: 'Primary CTA button (gradient bg)',
+          },
+          {
+            name: 'Button Secondary',
+            token: 'type/button-secondary',
+            sample: 'Meet the Team',
+            style: 'font-size: 15px; font-weight: 600; color: rgba(255,255,255,0.7);',
+            spec: '15px · weight 600 · color rgba(255,255,255,0.7)',
+            usage: 'Ghost/outline button',
+          },
+          {
+            name: 'Caption / Footer',
+            token: 'type/caption',
+            sample: '© 2026 Paradyn, LLC · All rights reserved · Tupelo, MS',
+            style: 'font-size: 12px; font-weight: 400; color: rgba(255,255,255,0.22);',
+            spec: '12px · weight 400 · color rgba(255,255,255,0.22)',
+            usage: 'Footer text, tertiary labels, trusted-by tags',
+          },
+        ].map(t => (
+          <div style="padding: 28px 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: grid; grid-template-columns: 160px 1fr 220px; gap: 32px; align-items: center;">
+            <div>
+              <div style="font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 4px;">{t.name}</div>
+              <div style="font-size: 10px; font-weight: 500; font-family: monospace; color: rgba(55,194,215,0.7); margin-bottom: 6px;">{t.token}</div>
+              <div style="font-size: 10px; color: rgba(255,255,255,0.22); line-height: 1.5;">{t.usage}</div>
+            </div>
+            <div style={t.style}>{t.sample}</div>
+            <div style="font-size: 10px; font-family: monospace; color: rgba(255,255,255,0.35); line-height: 1.7;">{t.spec}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <div class="ds-divider"></div>
+
+    <!-- ─── SPACING & RADIUS ───────────────────────────────── -->
+    <section id="ds-spacing" class="ds-section" style="background: #06090a;">
+      <div class="ds-section-header">
+        <div class="ds-eyebrow">03 — Foundation</div>
+        <h2 class="ds-title">Spacing & Radius</h2>
+        <p class="ds-subtitle">Core layout constants used throughout the site. All spacing is in px.</p>
+      </div>
+
+      <div style="margin-bottom: 48px;">
+        <div style="font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px;">Spacing Scale</div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          {[
+            { token: 'spacing/section-v', value: '120px', usage: 'Section vertical padding (top & bottom)' },
+            { token: 'spacing/section-h', value: '24px', usage: 'Section horizontal padding (sides)' },
+            { token: 'spacing/section-v-lg', value: '140px', usage: 'Contact section vertical padding' },
+            { token: 'spacing/content-max', value: '1100px', usage: 'Max-width for inner section content' },
+            { token: 'spacing/nav-max', value: '1200px', usage: 'Max-width for navigation' },
+            { token: 'spacing/nav-h', value: '64px', usage: 'Navigation bar height' },
+            { token: 'spacing/card-pad', value: '28px', usage: '.card padding' },
+            { token: 'spacing/card-hi-pad', value: '36px', usage: '.card-hi padding (founder cards)' },
+            { token: 'spacing/section-gap', value: '64px', usage: 'Heading to content gap within sections' },
+            { token: 'spacing/icon-box', value: '44px', usage: '.icon-box size (width & height)' },
+          ].map(s => (
+            <div style="display: grid; grid-template-columns: 200px 80px 1fr; gap: 16px; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.04);">
+              <div style="font-size: 11px; font-family: monospace; color: rgba(55,194,215,0.7);">{s.token}</div>
+              <div style="font-size: 13px; font-weight: 700; color: #fff;">{s.value}</div>
+              <div style="font-size: 12px; color: rgba(255,255,255,0.35);">{s.usage}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <div style="font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px;">Border Radius</div>
+        <div style="display: flex; gap: 24px; align-items: flex-end;">
+          {[
+            { token: 'radius/sm', value: '12px', usage: 'icon-box, step buttons' },
+            { token: 'radius/card', value: '16px', usage: '.card, .card-hi' },
+            { token: 'radius/avatar', value: '18px', usage: 'Founder avatar' },
+            { token: 'radius/full', value: '999px', usage: 'Buttons, pill badges, nav CTA' },
+          ].map(r => (
+            <div style="flex: 1;">
+              <div style={`width: 100%; height: 60px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: ${r.value};`}></div>
+              <div class="ds-label">{r.token}</div>
+              <div class="ds-value">{r.value}</div>
+              <div style="font-size: 10px; color: rgba(255,255,255,0.22); margin-top: 3px;">{r.usage}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <div class="ds-divider"></div>
+
+    <!-- ─── BUTTONS ────────────────────────────────────────── -->
+    <section id="ds-buttons" class="ds-section" style="background: #050508;">
+      <div class="ds-section-header">
+        <div class="ds-eyebrow">04 — Components</div>
+        <h2 class="ds-title">Buttons</h2>
+        <p class="ds-subtitle">Three button variants. All use <code style="background:rgba(255,255,255,0.07);padding:2px 6px;border-radius:4px;font-size:12px;">border-radius: 999px</code>. Primary and secondary use Framer Motion <code style="background:rgba(255,255,255,0.07);padding:2px 6px;border-radius:4px;font-size:12px;">whileHover / whileTap</code>.</p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 48px;">
+
+        <!-- Primary -->
+        <div>
+          <div style="font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px;">Primary — Gradient Fill</div>
+          <div style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap;">
+            <a style="display: inline-flex; align-items: center; gap: 12px; padding: 16px 32px; border-radius: 999px; background: linear-gradient(135deg, #37c2d7, #59bf8e); color: #050508; font-size: 16px; font-weight: 700; text-decoration: none; box-shadow: 0 0 28px rgba(55,194,215,0.30);">
+              <span style="width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </span>
+              Get in Touch
+            </a>
+            <div style="font-size: 12px; font-family: monospace; color: rgba(255,255,255,0.35); line-height: 1.8;">
+              bg: linear-gradient(135deg, #37c2d7, #59bf8e)<br/>
+              color: #050508 · padding: 16px 32px<br/>
+              radius: 999px · font: 16px / 700<br/>
+              shadow: 0 0 28px rgba(55,194,215,0.30)<br/>
+              hover shadow: 0 0 40px rgba(55,194,215,0.45)
+            </div>
+          </div>
+        </div>
+
+        <!-- Nav CTA -->
+        <div>
+          <div style="font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px;">Nav CTA — Gradient (Small)</div>
+          <div style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap;">
+            <a style="display: inline-flex; align-items: center; padding: 9px 22px; border-radius: 999px; background: linear-gradient(135deg, #37c2d7, #59bf8e); color: #050508; font-size: 13px; font-weight: 700; text-decoration: none; box-shadow: 0 0 16px rgba(55,194,215,0.25);">Contact</a>
+            <div style="font-size: 12px; font-family: monospace; color: rgba(255,255,255,0.35); line-height: 1.8;">
+              bg: linear-gradient(135deg, #37c2d7, #59bf8e)<br/>
+              color: #050508 · padding: 9px 22px<br/>
+              font: 13px / 700 · radius: 999px
+            </div>
+          </div>
+        </div>
+
+        <!-- Secondary Ghost -->
+        <div>
+          <div style="font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px;">Secondary — Ghost / Outline</div>
+          <div style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap;">
+            <a style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.7); font-size: 15px; font-weight: 600; text-decoration: none; background: transparent;">Meet the Team</a>
+            <div style="font-size: 12px; font-family: monospace; color: rgba(255,255,255,0.35); line-height: 1.8;">
+              bg: transparent<br/>
+              border: 1px solid rgba(255,255,255,0.14)<br/>
+              color: rgba(255,255,255,0.7) · padding: 14px 28px<br/>
+              font: 15px / 600 · radius: 999px<br/>
+              hover border: rgba(255,255,255,0.25)
+            </div>
+          </div>
+        </div>
+
+        <!-- White Pill with Arrow -->
+        <div>
+          <div style="font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px;">White Pill — With Arrow Icon</div>
+          <div style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap;">
+            <a style="display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; border-radius: 999px; background: #fff; color: #050508; font-size: 15px; font-weight: 700; text-decoration: none;">
+              <span style="width: 28px; height: 28px; border-radius: 50%; background: #050508; display: flex; align-items: center; justify-content: center;">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              See Our Research
+            </a>
+            <div style="font-size: 12px; font-family: monospace; color: rgba(255,255,255,0.35); line-height: 1.8;">
+              bg: #fff · color: #050508<br/>
+              padding: 14px 28px · radius: 999px<br/>
+              font: 15px / 700<br/>
+              icon: 28px circle, bg #050508, white arrow SVG
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="ds-divider"></div>
+
+    <!-- ─── CARDS ──────────────────────────────────────────── -->
+    <section id="ds-cards" class="ds-section" style="background: #06090a;">
+      <div class="ds-section-header">
+        <div class="ds-eyebrow">05 — Components</div>
+        <h2 class="ds-title">Cards</h2>
+        <p class="ds-subtitle">Two card variants — standard and elevated. Both use glass-morphism backgrounds with hairline borders. Cards lift on hover: <code style="background:rgba(255,255,255,0.07);padding:2px 6px;border-radius:4px;font-size:12px;">whileHover: y: -8</code>.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 48px;">
+
+        <!-- .card — Problem card -->
+        <div style="background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; padding: 28px;">
+          <div style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, rgba(55,194,215,0.2), rgba(89,191,142,0.2)); border: 1px solid rgba(55,194,215,0.2); color: #a5b4fc; margin-bottom: 20px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="9" height="9" rx="2"/><rect x="13" y="7" width="9" height="9" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M8 16v2a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2"/></svg>
+          </div>
+          <h3 style="font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 10px;">Disconnected Tools</h3>
+          <p style="font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.7;">Spreadsheets, email, accounting, POS, inventory, and CRM operating in silos.</p>
+          <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.05); font-size: 10px; font-family: monospace; color: rgba(55,194,215,0.6);">.card — Problem / Feature card</div>
+        </div>
+
+        <!-- .card — Research item -->
+        <div style="background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; padding: 28px; display: flex; gap: 20px; align-items: flex-start;">
+          <div style="font-size: 13px; font-weight: 700; color: #37c2d7; width: 28px; flex-shrink: 0; padding-top: 2px;">01</div>
+          <div>
+            <h3 style="font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 8px;">Data Structuring Research</h3>
+            <p style="font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.6;">Investigating how SMBs can structure operational data into clean, AI-ready representations.</p>
+          </div>
+          <div style="position: absolute; bottom: 16px; left: 28px; font-size: 10px; font-family: monospace; color: rgba(55,194,215,0.6);">.card — Research / List item</div>
+        </div>
+
+        <!-- .card-hi — Founder card -->
+        <div style="background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.11); border-radius: 16px; padding: 36px; position: relative; overflow: hidden;">
+          <div style="position: absolute; top: 0; left: 0; right: 0; height: 120px; background: linear-gradient(to bottom, rgba(55,194,215,0.07), transparent); pointer-events: none;"></div>
+          <div style="width: 60px; height: 60px; border-radius: 18px; background: linear-gradient(135deg, #37c2d7, #59bf8e); display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 24px; box-shadow: 0 8px 24px rgba(55,194,215,0.3);">RS</div>
+          <h3 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 4px;">Rebecca A. Stevens</h3>
+          <p style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #3ecfbe; margin-bottom: 20px;">Co-Founder</p>
+          <blockquote style="font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.7; border-left: 2px solid rgba(55,194,215,0.3); padding-left: 14px; margin-bottom: 16px; font-style: italic;">"Understanding the real constraints of small businesses isn't a nice-to-have."</blockquote>
+          <div style="font-size: 10px; font-family: monospace; color: rgba(55,194,215,0.6);">.card-hi — Founder / Profile card</div>
+        </div>
+
+      </div>
+
+      <!-- Token specs -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+        <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 24px;">
+          <div style="font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 16px; font-family: monospace;">.card</div>
+          {[
+            ['background', 'rgba(255,255,255,0.025)'],
+            ['border', '1px solid rgba(255,255,255,0.07)'],
+            ['border-radius', '16px'],
+            ['padding', '28px'],
+            ['hover', 'y: -8, transition: 0.22s'],
+          ].map(([k, v]) => (
+            <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 11px;">
+              <span style="color: rgba(255,255,255,0.4);">{k}</span>
+              <span style="font-family: monospace; color: rgba(55,194,215,0.8);">{v}</span>
+            </div>
+          ))}
+        </div>
+        <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 24px;">
+          <div style="font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 16px; font-family: monospace;">.card-hi</div>
+          {[
+            ['background', 'rgba(255,255,255,0.045)'],
+            ['border', '1px solid rgba(255,255,255,0.11)'],
+            ['border-radius', '16px'],
+            ['padding', '36px'],
+            ['hover', 'y: -10, transition: 0.22s'],
+            ['inner glow', 'linear-gradient top, rgba(55,194,215,0.07)'],
+          ].map(([k, v]) => (
+            <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 11px;">
+              <span style="color: rgba(255,255,255,0.4);">{k}</span>
+              <span style="font-family: monospace; color: rgba(55,194,215,0.8);">{v}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <div class="ds-divider"></div>
+
+    <!-- ─── BADGES & LABELS ────────────────────────────────── -->
+    <section id="ds-badges" class="ds-section" style="background: #050508;">
+      <div class="ds-section-header">
+        <div class="ds-eyebrow">06 — Components</div>
+        <h2 class="ds-title">Badges, Labels & Icon Boxes</h2>
+        <p class="ds-subtitle">Small UI atoms used for categorization, labeling, and iconography throughout the site.</p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 48px;">
+
+        <!-- Pill Badge -->
+        <div>
+          <div style="font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px;">.pill-badge</div>
+          <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-bottom: 16px;">
+            <div style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 999px; font-size: 12px; font-weight: 500; letter-spacing: 0.03em; background: rgba(55,194,215,0.09); border: 1px solid rgba(55,194,215,0.3); color: #7dd8e8;">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="3" y="3" width="8" height="8" rx="2" stroke="#7dd8e8" stroke-width="1.2"/><path d="M5 1v2M7 1v2M9 1v2M5 11v2M7 11v2M9 11v2M1 5h2M1 7h2M1 9h2M11 5h2M11 7h2M11 9h2" stroke="#7dd8e8" stroke-width="1.2" stroke-linecap="round"/></svg>
+              Start Your Journey with AI Research
+            </div>
+            <div style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 999px; font-size: 12px; font-weight: 500; letter-spacing: 0.03em; background: rgba(55,194,215,0.09); border: 1px solid rgba(55,194,215,0.3); color: #7dd8e8;">Scope</div>
+            <div style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 999px; font-size: 12px; font-weight: 500; letter-spacing: 0.03em; background: rgba(55,194,215,0.09); border: 1px solid rgba(55,194,215,0.3); color: #7dd8e8;">Constraints</div>
+            <div style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 999px; font-size: 12px; font-weight: 500; letter-spacing: 0.03em; background: rgba(55,194,215,0.09); border: 1px solid rgba(55,194,215,0.3); color: #7dd8e8;">Requirements</div>
+          </div>
+          <div style="font-size: 11px; font-family: monospace; color: rgba(255,255,255,0.35); line-height: 1.8;">
+            bg: rgba(55,194,215,0.09) · border: 1px solid rgba(55,194,215,0.3) · color: #7dd8e8<br/>
+            padding: 6px 16px · radius: 999px · font: 12px / 500 · tracking: 0.03em
+          </div>
+        </div>
+
+        <!-- Section Label -->
+        <div>
+          <div style="font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px;">.section-label</div>
+          <div style="display: flex; gap: 32px; align-items: center; flex-wrap: wrap; margin-bottom: 16px;">
+            {['The Problem', 'Our Research', 'Our Approach', 'Our Impact', 'The Team', 'Partnerships & Research'].map(l => (
+              <div style="font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #3ecfbe;">{l}</div>
+            ))}
+          </div>
+          <div style="font-size: 11px; font-family: monospace; color: rgba(255,255,255,0.35); line-height: 1.8;">
+            font: 11px / 600 · tracking: 0.12em · UPPERCASE · color: #3ecfbe<br/>
+            Always appears directly above H2 section headings · margin-bottom: 16px
+          </div>
+        </div>
+
+        <!-- Icon Box -->
+        <div>
+          <div style="font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px;">.icon-box</div>
+          <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap; margin-bottom: 16px;">
+            {[
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="9" height="9" rx="2"/><rect x="13" y="7" width="9" height="9" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M8 16v2a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2"/></svg>,
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>,
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>,
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>,
+            ].map(icon => (
+              <div style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, rgba(55,194,215,0.2), rgba(89,191,142,0.2)); border: 1px solid rgba(55,194,215,0.2); color: #a5b4fc;">
+                {icon}
+              </div>
+            ))}
+          </div>
+          <div style="font-size: 11px; font-family: monospace; color: rgba(255,255,255,0.35); line-height: 1.8;">
+            size: 44×44px · radius: 12px · bg: linear-gradient(135deg, rgba(55,194,215,0.2), rgba(89,191,142,0.2))<br/>
+            border: 1px solid rgba(55,194,215,0.2) · icon color: #a5b4fc · icons: 20×20px inline SVG, stroke="currentColor"
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div>
+          <div style="font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px;">.divider</div>
+          <div style="height: 1px; background: linear-gradient(90deg, transparent, rgba(55,194,215,0.2), transparent); margin-bottom: 16px;"></div>
+          <div style="font-size: 11px; font-family: monospace; color: rgba(255,255,255,0.35);">
+            height: 1px · background: linear-gradient(90deg, transparent, rgba(55,194,215,0.2), transparent)
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="ds-divider"></div>
+
+    <!-- ─── NAVIGATION ─────────────────────────────────────── -->
+    <section id="ds-nav" class="ds-section" style="background: #06090a;">
+      <div class="ds-section-header">
+        <div class="ds-eyebrow">07 — Components</div>
+        <h2 class="ds-title">Navigation</h2>
+        <p class="ds-subtitle">Fixed top nav with blur backdrop. Max-width 1200px inner container, 64px height. Logo at 131×44px. Disappears on mobile (md breakpoint).</p>
+      </div>
+
+      <!-- Nav preview -->
+      <div style="background: rgba(5,5,8,0.75); border-bottom: 1px solid rgba(255,255,255,0.06); border-radius: 12px; backdrop-filter: blur(24px); margin-bottom: 32px; overflow: hidden;">
+        <div style="max-width: 1100px; margin: 0 auto; padding: 0 32px; height: 64px; display: flex; align-items: center; justify-content: space-between;">
+          <div style="width: 131px; height: 44px; background: rgba(255,255,255,0.08); border-radius: 6px; display: flex; align-items: center; padding-left: 8px; font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.4);">Logo</div>
+          <div style="display: flex; gap: 36px;">
+            {['Research', 'Approach', 'Founders', 'Contact'].map(l => (
+              <span style="font-size: 14px; color: rgba(255,255,255,0.5);">{l}</span>
+            ))}
+          </div>
+          <a style="display: inline-flex; align-items: center; padding: 9px 22px; border-radius: 999px; background: linear-gradient(135deg, #37c2d7, #59bf8e); color: #050508; font-size: 13px; font-weight: 700; text-decoration: none; box-shadow: 0 0 16px rgba(55,194,215,0.25);">Contact</a>
+        </div>
+      </div>
+
+      <!-- Token spec -->
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+        {[
+          ['position', 'fixed · top: 0 · z-index: 50'],
+          ['background', 'rgba(5,5,8,0.75)'],
+          ['backdrop-filter', 'blur(24px)'],
+          ['border-bottom', '1px solid rgba(255,255,255,0.06)'],
+          ['height', '64px'],
+          ['max-width (inner)', '1200px · margin: 0 auto'],
+          ['padding (sides)', '0 32px'],
+          ['logo size', '131×44px · objectFit: contain'],
+          ['link font', '14px / 400 · rgba(255,255,255,0.5) → #fff'],
+          ['link gap', '36px'],
+          ['cta', '13px / 700 · gradient bg · 9px 22px pad'],
+          ['entry animation', 'opacity 0→1, y -20→0, 0.55s easeOut'],
+        ].map(([k, v]) => (
+          <div style="display: flex; justify-content: space-between; padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: 8px; font-size: 11px;">
+            <span style="color: rgba(255,255,255,0.4);">{k}</span>
+            <span style="font-family: monospace; color: rgba(55,194,215,0.8);">{v}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <div class="ds-divider"></div>
+
+    <!-- ─── ANIMATION TOKENS ───────────────────────────────── -->
+    <section id="ds-animation" class="ds-section" style="background: #050508;">
+      <div class="ds-section-header">
+        <div class="ds-eyebrow">08 — Motion</div>
+        <h2 class="ds-title">Animation Tokens</h2>
+        <p class="ds-subtitle">All animations use Framer Motion. Two patterns: entry animations (on mount / on scroll) and interaction animations (hover / tap).</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+
+        <!-- Entry animations -->
+        <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 24px;">
+          <div style="font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 20px;">Entry Animations</div>
+          {[
+            { name: 'Fade Up (Hero)', token: 'motion/fade-up-hero', spec: 'opacity 0→1, y 28→0, duration 0.75s, ease [0.22,1,0.36,1]', usage: 'Hero badge, headline, body, CTA' },
+            { name: 'Fade Up (Section)', token: 'motion/fade-up-section', spec: 'opacity 0→1, y 24→0, duration 0.65s, easeOut', usage: 'Section headings (useInView)' },
+            { name: 'Fade Up (Card)', token: 'motion/fade-up-card', spec: 'opacity 0→1, y 36→0, duration 0.6s, ease [0.22,1,0.36,1], stagger 0.12s', usage: 'Card grids (useInView)' },
+            { name: 'Slide Left', token: 'motion/slide-left', spec: 'opacity 0→1, x -24→0, duration 0.6s, easeOut', usage: 'Research list items (AnimateIn)' },
+            { name: 'Fade (Slow)', token: 'motion/fade-slow', spec: 'opacity 0→1, duration 0.7s, delay 0.9s', usage: 'Trusted-by bar, scroll indicator' },
+            { name: 'Nav Entry', token: 'motion/nav-entry', spec: 'opacity 0→1, y -20→0, duration 0.55s, easeOut', usage: 'Navigation bar on mount' },
+          ].map(a => (
+            <div style="padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.04);">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px;">
+                <span style="font-size: 12px; font-weight: 600; color: #fff;">{a.name}</span>
+                <span style="font-size: 10px; font-family: monospace; color: rgba(55,194,215,0.7);">{a.token}</span>
+              </div>
+              <div style="font-size: 10px; font-family: monospace; color: rgba(255,255,255,0.35); margin-bottom: 3px;">{a.spec}</div>
+              <div style="font-size: 10px; color: rgba(255,255,255,0.22);">{a.usage}</div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Interaction animations -->
+        <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 24px;">
+          <div style="font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 20px;">Interaction Animations</div>
+          {[
+            { name: 'Card Hover Lift', token: 'motion/card-hover', spec: 'whileHover: y -8, duration 0.22s', usage: '.card (Problem, Impact cards)' },
+            { name: 'Card Hi Hover Lift', token: 'motion/card-hi-hover', spec: 'whileHover: y -10, duration 0.22s', usage: '.card-hi (Founder cards)' },
+            { name: 'Button Scale', token: 'motion/btn-hover', spec: 'whileHover: scale 1.04 · whileTap: scale 0.97', usage: 'Primary CTA buttons' },
+            { name: 'Button Scale Ghost', token: 'motion/btn-ghost-hover', spec: 'whileHover: scale 1.03 · whileTap: scale 0.97', usage: 'Ghost button' },
+            { name: 'Nav CTA Glow', token: 'motion/nav-cta-hover', spec: 'whileHover: scale 1.05, boxShadow 0 0 24px rgba(55,194,215,0.45)', usage: 'Navigation CTA button' },
+            { name: 'Step Button Slide', token: 'motion/step-hover', spec: 'whileHover: x 4, duration 0.18s', usage: 'Approach step selector buttons' },
+            { name: 'Avatar Scale', token: 'motion/avatar-hover', spec: 'whileHover: scale 1.06, duration 0.2s', usage: 'Founder avatar initials' },
+            { name: 'Scroll Cue Bounce', token: 'motion/scroll-cue', spec: 'animate: y [0,7,0], repeat Infinity, 1.5s easeInOut', usage: 'Hero scroll indicator line' },
+          ].map(a => (
+            <div style="padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.04);">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px;">
+                <span style="font-size: 12px; font-weight: 600; color: #fff;">{a.name}</span>
+                <span style="font-size: 10px; font-family: monospace; color: rgba(55,194,215,0.7);">{a.token}</span>
+              </div>
+              <div style="font-size: 10px; font-family: monospace; color: rgba(255,255,255,0.35); margin-bottom: 3px;">{a.spec}</div>
+              <div style="font-size: 10px; color: rgba(255,255,255,0.22);">{a.usage}</div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <div class="ds-divider"></div>
+
+    <!-- ─── DESIGN TOKENS TABLE ────────────────────────────── -->
+    <section id="ds-tokens" class="ds-section" style="background: #06090a;">
+      <div class="ds-section-header">
+        <div class="ds-eyebrow">09 — Reference</div>
+        <h2 class="ds-title">All Design Tokens</h2>
+        <p class="ds-subtitle">Complete flat reference of every design token. Colors defined in <code style="background:rgba(255,255,255,0.07);padding:2px 6px;border-radius:4px;font-size:12px;">src/styles/global.css</code> inside <code style="background:rgba(255,255,255,0.07);padding:2px 6px;border-radius:4px;font-size:12px;">@theme {}</code>.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2px;">
+        {[
+          // Colors
+          { category: 'Color', token: '--color-bg', value: '#050508', type: 'color' },
+          { category: 'Color', token: '--color-surface', value: '#06090a', type: 'color' },
+          { category: 'Color', token: '--color-card', value: 'rgba(255,255,255,0.03)', type: 'color' },
+          { category: 'Color', token: '--color-border', value: 'rgba(255,255,255,0.07)', type: 'color' },
+          { category: 'Color', token: '--color-border-hi', value: 'rgba(255,255,255,0.12)', type: 'color' },
+          { category: 'Color', token: '--color-primary', value: '#37c2d7', type: 'color' },
+          { category: 'Color', token: '--color-secondary', value: '#59bf8e', type: 'color' },
+          { category: 'Color', token: '--color-text', value: '#ffffff', type: 'color' },
+          { category: 'Color', token: '--color-muted', value: '#7a8a88', type: 'color' },
+          { category: 'Color', token: '--color-muted-hi', value: '#a0b8b4', type: 'color' },
+          { category: 'Color', token: 'accent-teal', value: '#3ecfbe', type: 'color' },
+          { category: 'Color', token: 'badge-text', value: '#7dd8e8', type: 'color' },
+          // Typography
+          { category: 'Font', token: '--font-family-sans', value: "'Inter', system-ui, sans-serif", type: 'string' },
+          { category: 'Type', token: 'type/hero', value: 'clamp(42px,7vw,80px) / 800 / -0.03em', type: 'string' },
+          { category: 'Type', token: 'type/section-h2', value: 'clamp(30px,4vw,48px) / 800 / -0.02em', type: 'string' },
+          { category: 'Type', token: 'type/card-title', value: '16px / 700 / #fff', type: 'string' },
+          { category: 'Type', token: 'type/body', value: '16px / 400 / rgba(255,255,255,0.45)', type: 'string' },
+          { category: 'Type', token: 'type/card-body', value: '14px / 400 / rgba(255,255,255,0.45)', type: 'string' },
+          { category: 'Type', token: 'type/section-label', value: '11px / 600 / UPPER / 0.12em / #3ecfbe', type: 'string' },
+          { category: 'Type', token: 'type/pill-badge', value: '12px / 500 / 0.03em / #7dd8e8', type: 'string' },
+          { category: 'Type', token: 'type/nav-link', value: '14px / 400 / rgba(255,255,255,0.5)', type: 'string' },
+          { category: 'Type', token: 'type/caption', value: '12px / 400 / rgba(255,255,255,0.22)', type: 'string' },
+          // Spacing
+          { category: 'Spacing', token: 'spacing/section-v', value: '120px', type: 'string' },
+          { category: 'Spacing', token: 'spacing/section-h', value: '24px', type: 'string' },
+          { category: 'Spacing', token: 'spacing/content-max', value: '1100px', type: 'string' },
+          { category: 'Spacing', token: 'spacing/nav-height', value: '64px', type: 'string' },
+          { category: 'Spacing', token: 'spacing/card-pad', value: '28px', type: 'string' },
+          { category: 'Spacing', token: 'spacing/card-hi-pad', value: '36px', type: 'string' },
+          // Radius
+          { category: 'Radius', token: 'radius/sm', value: '12px', type: 'string' },
+          { category: 'Radius', token: 'radius/card', value: '16px', type: 'string' },
+          { category: 'Radius', token: 'radius/avatar', value: '18px', type: 'string' },
+          { category: 'Radius', token: 'radius/full', value: '999px', type: 'string' },
+          // Shadow/Glow
+          { category: 'Shadow', token: 'shadow/nav-cta', value: '0 0 16px rgba(55,194,215,0.25)', type: 'string' },
+          { category: 'Shadow', token: 'shadow/btn-primary', value: '0 0 28px rgba(55,194,215,0.30)', type: 'string' },
+          { category: 'Shadow', token: 'shadow/btn-hover', value: '0 0 40px rgba(55,194,215,0.45)', type: 'string' },
+          { category: 'Shadow', token: 'shadow/avatar', value: '0 8px 24px rgba(55,194,215,0.3)', type: 'string' },
+        ].map(t => (
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 9px 14px; background: rgba(255,255,255,0.02); gap: 12px;">
+            <div style="display: flex; align-items: center; gap: 10px; min-width: 0;">
+              <span style="font-size: 9px; font-weight: 700; color: rgba(55,194,215,0.6); letter-spacing: 0.08em; text-transform: uppercase; flex-shrink: 0; width: 52px;">{t.category}</span>
+              <span style="font-size: 11px; font-family: monospace; color: rgba(255,255,255,0.7);">{t.token}</span>
+            </div>
+            <span style="font-size: 11px; font-family: monospace; color: rgba(255,255,255,0.35); text-align: right; flex-shrink: 0;">{t.value}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+  </body>
+</html>
